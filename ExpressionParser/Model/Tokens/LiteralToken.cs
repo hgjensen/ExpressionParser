@@ -1,13 +1,15 @@
 ﻿using ExpressionParser.Model.Nodes;
 
-namespace ExpressionParser.Model.Tokens
-{
-	internal class LiteralToken<T> : Token
-	{
-		private readonly T value;
+namespace ExpressionParser.Model.Tokens;
 
-		internal LiteralToken(T value) => this.value = value;
+internal class LiteralToken<T> : Token {
+  private readonly T value;
 
-		internal override Node CreateNode() => new LiteralNode<T>(value);
-	}
+  internal LiteralToken(T value) {
+    this.value = value;
+  }
+
+  internal override Node CreateNode() {
+    return new LiteralNode<T>(value);
+  }
 }

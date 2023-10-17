@@ -1,20 +1,19 @@
 ﻿using System;
 using ExpressionParser.Model.Nodes;
 
-namespace ExpressionParser.Model.Tokens
-{
-	internal class TypeToken : Token
-	{
-		private readonly Type type;
+namespace ExpressionParser.Model.Tokens;
 
-		internal TypeToken(Type type, string nodeType)
-		{
-			NodeType = nodeType;
-			this.type = type;
-		}
+internal class TypeToken : Token {
+  private readonly Type type;
 
-		public string NodeType { get; set; }
+  internal TypeToken(Type type, string nodeType) {
+    NodeType = nodeType;
+    this.type = type;
+  }
 
-		internal override Node CreateNode() => NodeType == "Type" ? (Node) new TypeNode(type) : new TypeCastNode(type);
-	}
+  public string NodeType { get; set; }
+
+  internal override Node CreateNode() {
+    return NodeType == "Type" ? (Node)new TypeNode(type) : new TypeCastNode(type);
+  }
 }

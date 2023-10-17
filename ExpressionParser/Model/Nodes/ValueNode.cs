@@ -1,14 +1,9 @@
 ﻿using System.Linq.Expressions;
 
-namespace ExpressionParser.Model.Nodes
-{
-	internal class ValueNode : UnaryNode
-	{
-		internal ValueNode() : base(2) { }
+namespace ExpressionParser.Model.Nodes;
 
-		internal override Expression BuildExpression(Expression callerExpression = null)
-		{
-			return Child.BuildExpression(callerExpression);
-		}
-	}
+internal class ValueNode : UnaryNode {
+  internal ValueNode() : base(2) { }
+
+  internal override Expression BuildExpression(Expression callerExpression = null) => Child.BuildExpression(callerExpression);
 }

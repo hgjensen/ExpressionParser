@@ -1,18 +1,18 @@
 ﻿using ExpressionParser.Model.Nodes;
 
-namespace ExpressionParser.Model.Tokens
-{
-	internal class NameToken : Token
-	{
-		private readonly string name;
+namespace ExpressionParser.Model.Tokens;
 
-		internal NameToken(string name, string nodeType)
-		{
-			this.name = name;
-			NodeType = nodeType;
-		}
-		public string NodeType { get; set; }
+internal class NameToken : Token {
+  private readonly string name;
 
-		internal override Node CreateNode() => NodeType == "Method" ? (Node) new MethodNode(name) : new PropertyNode(name);
-	}
+  internal NameToken(string name, string nodeType) {
+    this.name = name;
+    NodeType = nodeType;
+  }
+
+  public string NodeType { get; set; }
+
+  internal override Node CreateNode() {
+    return NodeType == "Method" ? new MethodNode(name) : new PropertyNode(name);
+  }
 }

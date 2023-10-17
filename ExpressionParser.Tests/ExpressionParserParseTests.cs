@@ -84,8 +84,9 @@ namespace ExpressionParser.Tests
 		public object ExpressionParser_Parse_WithValid_TypeOperations_ShouldPass(string input)
 		{
 			var result = ExpressionParser.Parse(input);
-			return result.DynamicInvoke();
-		}
+			var res = result.DynamicInvoke();
+      return res;
+    }
 
 		[TestCase("abc")]
 		[TestCase("abc()")]
