@@ -1,19 +1,19 @@
 ﻿using System.Linq.Expressions;
 
-namespace ExpressionParser.Model.Nodes;
-
-internal abstract class LiteralNode : Node {
-  protected LiteralNode() : base(99) { }
-}
-
-internal class LiteralNode<T> : LiteralNode {
-  internal LiteralNode(T value) {
-    Value = value;
+namespace ExpressionParser.Model.Nodes {
+  internal abstract class LiteralNode : Node {
+    protected LiteralNode() : base(99) { }
   }
 
-  internal T Value { get; }
+  internal class LiteralNode<T> : LiteralNode {
+    internal LiteralNode(T value) {
+      Value = value;
+    }
 
-  internal override Expression BuildExpression(Expression callerExpression = null) {
-    return Expression.Constant(Value);
+    internal T Value { get; }
+
+    internal override Expression BuildExpression(Expression callerExpression = null) {
+      return Expression.Constant(Value);
+    }
   }
 }

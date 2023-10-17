@@ -70,7 +70,9 @@ namespace ExpressionParser.Tests
 		[Test]
 		public void ExpressionParser_ParseFor_WithParameterName_AndReturnType_ShouldPass()
 		{
-			var result = ExpressionParser.ParseFor<SomeDummy, bool>("FalseProperty || (!(TrueProperty && FalseProperty) && TrueProperty)", "p");
+			var result = ExpressionParser
+				.Using(typeof(SomeDummy), "tre")
+				.ParseFor<SomeDummy, bool>("tre.FalseProperty || (!(pre.TrueProperty && FalseProperty) && tre.TrueProperty)", "pre");
 			Assert.That(result(dummy), Is.True);
 		}
 
